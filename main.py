@@ -8,12 +8,10 @@ def add_student():
                 print("Student already exists")
                 continue
             else:
-                key = student_id
-                student_name = input("Student's Name: ").title().strip()
-                first = student_name
-                last = student_name
-                value = student_name
-                students[key] = value
+                student_name = input("Student's Name: ")
+                student = {"name": student_name}
+                students[student_id] = student
+                print("Student Added!\n")
                 break
         except ValueError:
             print("Invalid Input")
@@ -23,6 +21,8 @@ def view_all_students():
     if not students:
         print("No students added!\n")
     else:
+        for key in students:
+            print("ID: " + str(key), students[key])
         print()
 
 def search_for_student():
@@ -41,7 +41,6 @@ def update_student():
         print("No students added!\n")
     else:
         print()
-    pass
 
 def delete_student():
     if not students:

@@ -74,7 +74,26 @@ def delete_student():
     if not students:
         print("No students added!\n")
     else:
-        print("Delete feature coming soon...\n")
+        try:
+            student_id = int(input("Student's ID: "))
+            if student_id in students:
+                print("Student Found!")
+                print(f"ID: {student_id}")
+                print(f"Name: {students[student_id].get('name', 'N/A')}")
+                print(f"Major: {students[student_id].get('major', 'N/A')}\n")
+
+                choice = input("Are you sure you want to delete student? (y/n): ").lower()
+                if choice == 'y':
+                    del students[student_id]
+                    print("Student Deleted!\n")
+                elif choice == 'n':
+                    print("Voided!\n")
+                else:
+                    print("Invalid Input!\n")
+            else:
+                print("Student not found!\n")
+        except ValueError:
+            print("Invalid Input!\n")
 
 
 if __name__ == "__main__":
@@ -104,6 +123,7 @@ if __name__ == "__main__":
                 case 6:
                     delete_student()
                 case 7:
+                    print("Exiting program...")
                     break
                 case _:
                     print("Invalid Choice!\n")
